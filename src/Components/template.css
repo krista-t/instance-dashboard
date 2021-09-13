@@ -1,0 +1,14 @@
+.template-select{
+    grid-area: 2/1/2/1;
+    margin: 0 auto;
+  }
+  
+  select {
+    width: 20vw;
+    min-height: 45px;
+    font-size: 1rem; 
+    padding: 0.5rem;
+    border: .5px solid var(--color-grey-400);
+    border-radius: 5px;
+    color: var(--color-grey-600);
+  }
