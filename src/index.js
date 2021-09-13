@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import "./Components/header.css";
 import "./Components/template.css";
+import "./Components/search.css";
 import App from './App';
 
 
