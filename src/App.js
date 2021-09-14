@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "./Components/Header";
 import Template from "./Components/Template";
 import Search from "./Components/Search";
+import Facets from "./Components/Facets";
 import Footer from "./Components/Footer";
 function App() {
   const API_templates = "https://data.windenergy.dtu.dk/api/sesame/v1/get-template-ids"
@@ -27,6 +28,7 @@ function App() {
    <Template templates = {templates} 
    ></Template>
    <Search></Search>
+   <Facets></Facets>
    <Footer></Footer>
     </div>
   );
