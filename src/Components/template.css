@@ -11,4 +11,5 @@
     border: .5px solid var(--color-grey-400);
     border-radius: 5px;
     color: var(--color-grey-600);
+    cursor: pointer;
   }
