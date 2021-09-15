@@ -24,7 +24,7 @@ const toggle =()=> setShowBoxes(!showBoxes);
                      </ul> <br/>
 
                      {/* TODO: dynamically display */}
-               {!showBoxes ? (<>
+               {/* {!showBoxes ? (<>
                 <input type="checkbox"
                  name = "language" value = "eng" />
                   <label for= "language">eng</label><br/>
@@ -35,7 +35,7 @@ const toggle =()=> setShowBoxes(!showBoxes);
                  name = "language" value = "eng" />
                   <label for= "language">eng</label><br/>
 
-                  </>): null} 
+                  </>): null}  */}
                 </form>
                 </div>
         </section>
