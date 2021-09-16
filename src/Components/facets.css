@@ -3,9 +3,9 @@
     }
     .facets-container{
         margin: 0 auto;
-        height: 30vw;
-        max-width: 20vw;
-        overflow: scroll;
+        max-height: 32vw;
+        max-width: 19vw;
+        overflow-y: scroll;
     }
     .facets-title-container {
         padding: 5px 10px ;
@@ -41,12 +41,12 @@
     
     .facets li:hover, .facets .icon:hover{
         color: var(--color-grey-500);
-        transform: scale(1.05);
-        -webkit-transform: scale(1.05);
-        -moz-transform: scale(1.05);
-        -ms-transform: scale(1.05);
-        -o-transform: scale(1.05);
-    }
+        transform: scale(0.99);
+        -webkit-transform: scale(0.99);
+        -moz-transform: scale(0.99);
+        -ms-transform: scale(0.99);
+        -o-transform: scale(0.99);
+}
     
     
     input[type = "checkbox"] + label {
@@ -73,5 +73,5 @@
             -webkit-filter: hue-rotate(325deg)    ;
     }
      
-  
+
       

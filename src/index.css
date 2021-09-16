@@ -23,6 +23,8 @@ body {
      'Arial',
     sans-serif;
     display: flex;
+    justify-content: center;
+    align-items: center;
     background-color:var( --color-grey-100);
 }
 
