@@ -4,8 +4,13 @@ import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 const Facets = ({facets}) => {
     
     //DO NOT SHOW CHECKBOXES ON INITIAL RENDER
-    const [showBoxes, setShowBoxes]= useState(true);
-//const toggle =()=> setShowBoxes(!showBoxes);
+    const [showBoxes, setShowBoxes]= useState(false);
+    const toggle = i => {
+        if (showBoxes === i) {
+          return setShowBoxes(null);
+        }
+        setShowBoxes(i);
+      };
     return (
         <section className = "facets">
             <div className="facets-container">
@@ -13,31 +18,27 @@ const Facets = ({facets}) => {
                 <ul className="facets-title-container"> 
                 {Object.keys(facets).map((key,i) => 
                 (<div>
-                  <li key = {i} onClick = {()=> setShowBoxes(!showBoxes)}
-                  >{key}<span className = "icon">{ !showBoxes ?<FaAngleUp/>:<FaAngleDown/>}</span> </li><br/>
-
-{Object.keys(facets[key]).map((item,i)=>
+                  <li onClick = {()=> toggle(i)} key = {i} value = {key} 
+                  >{key}<span className = "icon">{ showBoxes === i ?<FaAngleUp/>:<FaAngleDown/>}</span>
+                  </li><br/>
+                {Object.keys(facets[key]).map((item)=>
                         {let boxVal = facets[key][item]["rdfs:label"]
                          return(
                            <div>           
-                 { !showBoxes ? 
-                 (<> <input type="checkbox" key ={i}
+                 {showBoxes === i ? 
+                 (<> <input type="checkbox" 
                  name = {boxVal} value = {boxVal} />
                   <label forhtml= {boxVal}>{boxVal}</label><br/>
                   </>)
-               : null}  
-
-                          </div>)} 
+                  : null}  
+                    </div>)} 
                     )}   
-                  
                   </div>) 
                  )}
-                </ul>
-                </form>
-          </div>
+               </ul>
+               </form>
+           </div>
         </section>
     )
 }
-
 export default Facets
-//toggle(!showBoxes && e.target.textContent == key)
