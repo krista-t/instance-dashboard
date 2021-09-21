@@ -1,15 +1,40 @@
-.template-select{
-    grid-area: 2/1/2/1;
-    margin: 0 auto;
-  }
-  
-  select {
-    width: 20vw;
-    min-height: 45px;
-    font-size: 1rem; 
-    padding: 0.5rem;
-    border: .5px solid var(--color-grey-400);
-    border-radius: 5px;
-    color: var(--color-grey-600);
-    cursor: pointer; 
-  }
+.template-select {
+  grid-area: 2/1/2/1;
+  margin: 0 auto;
+}
+
+.list-container {
+  position: absolute;
+  top: 12%;
+  list-style-type: none;
+  width: 20vw;
+  height: auto;
+  background-color: var(--color-grey-100);
+  font-size: 1rem;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.list-container li {
+  padding: 5px;
+}
+.list-container li:hover {
+  color: white;
+  background: var(--color-grey-500);
+}
+
+.value-container {
+  display: flex;
+  width: 20vw;
+  min-height: 45px;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 0.5px solid var(--color-grey-400);
+  border-radius: 5px;
+  color: var(--color-grey-600);
+  cursor: pointer;
+}
+.value-container span {
+  align-self: center;
+  margin-left: auto;
+}

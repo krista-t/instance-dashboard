@@ -48,7 +48,9 @@
         -o-transform: scale(0.99);
 }
     
-    
+    .checkbox-row {
+        padding: 10px;
+    }
     input[type = "checkbox"] + label {
             filter: invert(20%) hue-rotate(18deg) brightness(1.6);
             -webkit-filter: invert(20%) hue-rotate(18deg) brightness(1.6);
@@ -74,4 +76,5 @@
     }
      
 
-      
+    .active {   background-color: red;   color: #fff;
+    } 
