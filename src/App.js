@@ -47,10 +47,31 @@ function App() {
     };
     fetchItems();
   }, [facetID]);
-  console.log(facetID);
-  //console.log(facets);
 
-  //TODO:GET INSTANCES
+  //GET INSTANCES IDs
+  const API_instance =
+    "https://data.windenergy.dtu.dk/api/sesame/v1/get-template?templateID= ";
+  //STATE FOR INSTANCES
+  const [instance, setInstance] = useState([]);
+  //SET DEFAULT STATE FOR INSTANCE REQuest
+  const [instanceID, setInstanceID] = useState(
+    "https%3A%2F%2Frepo.metadatacenter.org%2Ftemplates%2Fc2f771b8-7cd6-445d-8706-f3d8b9ae3134"
+  );
+  //CHANGE FACET STATE STATE DEPENDING ON TEMPLATE ID
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(`${API_instance}${instanceID}`);
+        const data = await response.json();
+        console.log(data);
+        setInstance(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchItems();
+  }, [instanceID]);
+
   return (
     <div className="App">
       <Header></Header>
@@ -58,6 +79,7 @@ function App() {
         templates={templates}
         facetID={facetID}
         setFacetID={setFacetID}
+        setInstanceID={setInstanceID}
       ></Template>
       <Search></Search>
       <Facets facets={facets}></Facets>

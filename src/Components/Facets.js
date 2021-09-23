@@ -27,7 +27,7 @@ const Facets = ({ facets }) => {
                 {Object.keys(facets[key]).map((item) => {
                   let boxVal = facets[key][item]["rdfs:label"];
                   return (
-                    <div>
+                    <div key={boxVal}>
                       {showBoxes === i ? (
                         <div>
                           <input type="checkbox" name={boxVal} value={boxVal} />

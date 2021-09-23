@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { FaAngleDown } from "react-icons/fa";
 
-const Template = ({ templates, setFacetID }) => {
-  //TODO: RESET ALL CHECK BOXES ONHANDLE CHAMGE USE REF
+const Template = ({ templates, setFacetID, setInstanceID }) => {
+  //TODO: RESET ALL CHECK BOXES ONHANDLE USE REF
 
   const [templateVal, setTemplateVal] = useState("");
   useEffect(() => {
@@ -15,6 +15,7 @@ const Template = ({ templates, setFacetID }) => {
     setTemplateVal(e.target.textContent);
     setFacetID(key);
     setShow(!show);
+    setInstanceID(key);
   };
 
   const handleToggle = (e) => {
