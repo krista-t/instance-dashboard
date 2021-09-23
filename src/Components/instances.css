@@ -1,0 +1,19 @@
+.instances {
+  grid-area: 3/2/3/2;
+}
+
+.list-wrapper {
+  padding: 15px;
+}
+
+.content {
+  /* border: 1px solid black; */
+}
+h3,
+h4 {
+  font-weight: 200;
+}
+
+h2 {
+  margin-top: 20px;
+}

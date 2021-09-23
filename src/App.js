@@ -3,6 +3,7 @@ import Header from "./Components/Header";
 import Template from "./Components/Template";
 import Search from "./Components/Search";
 import Facets from "./Components/Facets";
+import Instances from "./Components/Instances";
 import Footer from "./Components/Footer";
 
 //GET TEMPLATE IDs
@@ -50,7 +51,7 @@ function App() {
 
   //GET INSTANCES IDs
   const API_instance =
-    "https://data.windenergy.dtu.dk/api/sesame/v1/get-template?templateID= ";
+    "https://data.windenergy.dtu.dk/api/sesame/v1/get-instances?templateID= ";
   //STATE FOR INSTANCES
   const [instance, setInstance] = useState([]);
   //SET DEFAULT STATE FOR INSTANCE REQuest
@@ -63,7 +64,7 @@ function App() {
       try {
         const response = await fetch(`${API_instance}${instanceID}`);
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
         setInstance(data);
       } catch (err) {
         console.log(err);
@@ -81,8 +82,9 @@ function App() {
         setFacetID={setFacetID}
         setInstanceID={setInstanceID}
       ></Template>
-      <Search></Search>
+      <Search instance={instance}></Search>
       <Facets facets={facets}></Facets>
+      <Instances instance={instance}></Instances>
       <Footer></Footer>
     </div>
   );
