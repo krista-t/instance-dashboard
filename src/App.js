@@ -32,8 +32,9 @@ function App() {
   const [facets, setFacets] = useState([]);
   //SET DEFAULT STATE FOR FACETS REQuest
   const [facetID, setFacetID] = useState(
-    "https%3A%2F%2Frepo.metadatacenter.org%2Ftemplates%2Fc2f771b8-7cd6-445d-8706-f3d8b9ae3134"
+    "https://repo.metadatacenter.org/templates/2230186e-2890-4d38-9206-ded583fccafd"
   );
+
   //CHANGE FACET STATE STATE DEPENDING ON TEMPLATE ID
   useEffect(() => {
     const fetchItems = async () => {
@@ -56,7 +57,7 @@ function App() {
   const [instance, setInstance] = useState([]);
   //SET DEFAULT STATE FOR INSTANCE REQuest
   const [instanceID, setInstanceID] = useState(
-    "https%3A%2F%2Frepo.metadatacenter.org%2Ftemplates%2Fc2f771b8-7cd6-445d-8706-f3d8b9ae3134"
+    "https://repo.metadatacenter.org/templates/2230186e-2890-4d38-9206-ded583fccafd"
   );
   //CHANGE FACET STATE STATE DEPENDING ON TEMPLATE ID
   useEffect(() => {
@@ -73,6 +74,9 @@ function App() {
     fetchItems();
   }, [instanceID]);
 
+  //SEARCH HOOKS
+  const [search, setSearch] = useState("");
+
   return (
     <div className="App">
       <Header></Header>
@@ -82,9 +86,17 @@ function App() {
         setFacetID={setFacetID}
         setInstanceID={setInstanceID}
       ></Template>
-      <Search instance={instance}></Search>
+      <Search
+        instance={instance}
+        search={search}
+        setSearch={setSearch}
+      ></Search>
       <Facets facets={facets}></Facets>
-      <Instances instance={instance}></Instances>
+      <Instances
+        instance={instance}
+        search={search}
+        setSearch={setSearch}
+      ></Instances>
       <Footer></Footer>
     </div>
   );

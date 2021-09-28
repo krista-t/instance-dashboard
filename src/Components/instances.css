@@ -1,19 +1,18 @@
 .instances {
   grid-area: 3/2/3/2;
-}
-
-.list-wrapper {
   padding: 15px;
 }
 
-.content {
-  /* border: 1px solid black; */
-}
-h3,
+h5,
 h4 {
-  font-weight: 200;
+  font-weight: 100;
+  font-style: italic;
+  color: var(--color-grey-500);
+  margin-top: 5px;
 }
 
-h2 {
-  margin-top: 20px;
+h2,
+p {
+  margin-top: 15px;
+  color: var(--color-grey-700);
 }

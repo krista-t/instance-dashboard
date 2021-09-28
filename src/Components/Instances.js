@@ -1,4 +1,4 @@
-const Instances = ({ instance }) => {
+const Instances = ({ instance, search, setSearch }) => {
   let instancesSummary = [];
   let instanceData = {};
   let defaultKeywords = [
@@ -6,7 +6,6 @@ const Instances = ({ instance }) => {
     "schema:description",
     "pav:createdBy",
     "pav:lastUpdatedOn",
-    "@id",
     "variable",
   ];
 
@@ -29,17 +28,20 @@ const Instances = ({ instance }) => {
   for (let i = 0; i < instance.length; i++) {
     instancesSummary.push(iterateObject(instance[i], defaultKeywords, {}));
   }
-  console.log(instancesSummary);
+  instancesSummary = instancesSummary.filter(
+    (i) =>
+      i["schema:name"].toLowerCase().includes(search.toLowerCase()) ||
+      i["pav:lastUpdatedOn"].toLowerCase().includes(search.toLowerCase()) ||
+      i["schema:description"].toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <section className="instances">
       {instancesSummary.map((data, i) => (
         <div key={i} className="content">
           <h2>{data["schema:name"]}</h2>
-          <h4>{data["pav:lastUpdatedOn"]}</h4>
-          <h4>Author: {data["pav:createdBy"]}</h4>
-          <h4>{data["@id"]}</h4>
-          <h4>{data["instance no"]}</h4>
+          {/* <h5>AUTHOR: {data["pav:createdBy"]}</h5> */}
+          <h4>LAST UPDATED: {data["pav:lastUpdatedOn"]}</h4>
           <p>{data["schema:description"]}</p>
         </div>
       ))}

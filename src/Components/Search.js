@@ -1,4 +1,4 @@
-const Search = ({ instance }) => {
+const Search = ({ instance, search, setSearch }) => {
   return (
     <section className="search-wrapper">
       <div className="searchbar">
@@ -7,8 +7,8 @@ const Search = ({ instance }) => {
           id="search"
           type="text"
           placeholder=" &#128269;"
-          // value={search}
-          onChange={(e) => console.log(e.target.value)}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
       <span>
