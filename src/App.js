@@ -99,6 +99,8 @@ function App() {
         facets={facets}
         showBoxes={showBoxes}
         setShowBoxes={setShowBoxes}
+        search={search}
+        setSearch={setSearch}
       ></Facets>
       <Instances
         instance={instance}

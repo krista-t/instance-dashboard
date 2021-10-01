@@ -41,11 +41,14 @@ const Instances = ({ instance, search }) => {
     summaryData = iterateObject(instance[i], defaultKeywords, {});
     instancesSummary.push(summaryData);
   }
+
   instancesSummary = instancesSummary.filter(
     (i) =>
       i["schema:name"].toLowerCase().includes(search.toLowerCase()) ||
       i["pav:lastUpdatedOn"].toLowerCase().includes(search.toLowerCase()) ||
-      i["schema:description"].toLowerCase().includes(search.toLowerCase())
+      i["schema:description"].toLowerCase().includes(search.toLowerCase()) ||
+      i["subject"].toString().toLowerCase().includes(search.toLowerCase()) ||
+      i["variable"].toString().toLowerCase().includes(search.toLowerCase())
   );
 
   return (

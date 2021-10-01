@@ -1,15 +1,26 @@
 //import { useState } from "react";
+import Instances from "./Instances";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
-const Facets = ({ facets, showBoxes, setShowBoxes }) => {
-  //Object.keys(facets[key]).map((item) => {console.log(facets[key][item]["rdfs:label"])})
-  //DO NOT SHOW CHECKBOXES ON INITIAL RENDER
-
+const Facets = ({
+  facets,
+  showBoxes,
+  setShowBoxes,
+  instancesSummary,
+  setSearch,
+}) => {
+  console.log(instancesSummary);
   const toggle = (i) => {
     if (showBoxes === i) {
       return setShowBoxes(null);
     }
     setShowBoxes(i);
+  };
+
+  const handleChecked = (e) => {
+    if (e.target.checked) {
+      console.log(e.target.value);
+    }
   };
   return (
     <section className="facets">
@@ -31,7 +42,12 @@ const Facets = ({ facets, showBoxes, setShowBoxes }) => {
                     <div key={boxVal}>
                       {showBoxes === i ? (
                         <div>
-                          <input type="checkbox" name={boxVal} value={boxVal} />
+                          <input
+                            type="checkbox"
+                            name={boxVal}
+                            value={boxVal}
+                            onClick={(e) => handleChecked(e)}
+                          />
                           <label forhtml={boxVal}>{boxVal}</label>
                           <br />
                         </div>
