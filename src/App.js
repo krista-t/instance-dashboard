@@ -74,6 +74,8 @@ function App() {
     fetchItems();
   }, [instanceID]);
 
+  //CHECKBOX HOOK
+  const [showBoxes, setShowBoxes] = useState(false);
   //SEARCH HOOKS
   const [search, setSearch] = useState("");
 
@@ -85,17 +87,23 @@ function App() {
         facetID={facetID}
         setFacetID={setFacetID}
         setInstanceID={setInstanceID}
+        showBoxes={showBoxes}
+        setShowBoxes={setShowBoxes}
       ></Template>
       <Search
         instance={instance}
         search={search}
         setSearch={setSearch}
       ></Search>
-      <Facets facets={facets}></Facets>
+      <Facets
+        facets={facets}
+        showBoxes={showBoxes}
+        setShowBoxes={setShowBoxes}
+      ></Facets>
       <Instances
         instance={instance}
         search={search}
-        setSearch={setSearch}
+        facets={facets}
       ></Instances>
       <Footer></Footer>
     </div>

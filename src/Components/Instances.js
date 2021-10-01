@@ -1,32 +1,45 @@
-const Instances = ({ instance, search, setSearch }) => {
+const Instances = ({ instance, search }) => {
   let instancesSummary = [];
-  let instanceData = {};
   let defaultKeywords = [
     "schema:name",
     "schema:description",
     "pav:createdBy",
     "pav:lastUpdatedOn",
+    "rdfs:label",
+    "subject",
     "variable",
   ];
 
-  // instance.map((inst) => iterateObject(inst));
-
+  instance.map((instance) => delete instance["@context"]);
   //search template json by keywords
   function iterateObject(obj, keywords, result = {}) {
     for (let key in obj) {
-      if (typeof obj[key] == "object") {
+      if (typeof obj[key] == "object" && !Array.isArray(obj[key])) {
         iterateObject(obj[key], keywords, result);
       } else {
         if (keywords.includes(key)) {
-          result[key] = obj[key]; // add key-value pair to
+          if (Array.isArray(obj[key])) {
+            let terms = [];
+            let term = [];
+            for (let i = 0; i < obj[key].length; i++) {
+              term = obj[key][i]["rdfs:label"];
+              terms.push(term);
+            }
+            result[key] = terms;
+          } else {
+            result[key] = obj[key];
+          }
         }
       }
     }
     return result;
   }
 
+  let summaryData;
   for (let i = 0; i < instance.length; i++) {
-    instancesSummary.push(iterateObject(instance[i], defaultKeywords, {}));
+    // console.log(instance[i]);
+    summaryData = iterateObject(instance[i], defaultKeywords, {});
+    instancesSummary.push(summaryData);
   }
   instancesSummary = instancesSummary.filter(
     (i) =>
@@ -43,6 +56,8 @@ const Instances = ({ instance, search, setSearch }) => {
           {/* <h5>AUTHOR: {data["pav:createdBy"]}</h5> */}
           <h4>LAST UPDATED: {data["pav:lastUpdatedOn"]}</h4>
           <p>{data["schema:description"]}</p>
+          <p>Subjects: {data["subject"]}</p>
+          <p>Variables: {data["variable"]}</p>
         </div>
       ))}
     </section>

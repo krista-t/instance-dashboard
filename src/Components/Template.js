@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import { FaAngleDown } from "react-icons/fa";
 
-const Template = ({ templates, setFacetID, setInstanceID }) => {
-  //TODO: RESET ALL CHECK BOXES ONHANDLE USE REF
-
+const Template = ({
+  templates,
+  setFacetID,
+  setInstanceID,
+  showBoxes,
+  setShowBoxes,
+}) => {
   const [templateVal, setTemplateVal] = useState("");
+
   useEffect(() => {
     setTemplateVal(Object.values(templates)[0]);
   }, [templates]);
@@ -16,10 +21,10 @@ const Template = ({ templates, setFacetID, setInstanceID }) => {
     setFacetID(key);
     setShow(!show);
     setInstanceID(key);
+    setShowBoxes(!showBoxes);
   };
 
   const handleToggle = (e) => {
-    console.log(e.target.focus);
     setShow({ show: !show });
   };
   return (
