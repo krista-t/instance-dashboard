@@ -78,7 +78,18 @@ function App() {
   const [showBoxes, setShowBoxes] = useState(false);
   //SEARCH HOOKS
   const [search, setSearch] = useState("");
+  //FILTER HOOKS
+  const [filter, setFilter] = useState([]);
 
+  const handleChecked = (e) => {
+    const checked = e.target.checked;
+    const value = e.target.value;
+    setFilter((prev) =>
+      !checked ? prev.filter((v) => v !== value) : [...prev, value]
+    );
+  };
+
+  console.log(filter);
   return (
     <div className="App">
       <Header></Header>
@@ -99,13 +110,16 @@ function App() {
         facets={facets}
         showBoxes={showBoxes}
         setShowBoxes={setShowBoxes}
-        search={search}
-        setSearch={setSearch}
+        handleChecked={handleChecked}
+        filter={filter}
+        setFilter={setFilter}
       ></Facets>
       <Instances
         instance={instance}
         search={search}
         facets={facets}
+        handleChecked={handleChecked}
+        filter={filter}
       ></Instances>
       <Footer></Footer>
     </div>
