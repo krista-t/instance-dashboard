@@ -7,6 +7,7 @@ const Template = ({
   setInstanceID,
   showBoxes,
   setShowBoxes,
+  setFilter,
 }) => {
   const [templateVal, setTemplateVal] = useState("");
 
@@ -22,6 +23,7 @@ const Template = ({
     setShow(!show);
     setInstanceID(key);
     setShowBoxes(!showBoxes);
+    setFilter([]);
   };
 
   const handleToggle = (e) => {

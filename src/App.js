@@ -74,22 +74,18 @@ function App() {
     fetchItems();
   }, [instanceID]);
 
-  //CHECKBOX HOOK
-  const [showBoxes, setShowBoxes] = useState(false);
-  //SEARCH HOOKS
+  const [showBoxes, setShowBoxes] = useState({});
   const [search, setSearch] = useState("");
-  //FILTER HOOKS
   const [filter, setFilter] = useState([]);
 
-  const handleChecked = (e) => {
+  const handleChecked = (e, i) => {
     const checked = e.target.checked;
     const value = e.target.value;
     setFilter((prev) =>
-      !checked ? prev.filter((v) => v !== value) : [...prev, value]
+      //if it´s checked copy prev val and add new in arr, else filter previous, and remove what is unchecked
+      checked ? [...prev, value] : prev.filter((v) => v !== value)
     );
   };
-
-  console.log(filter);
   return (
     <div className="App">
       <Header></Header>
@@ -100,6 +96,7 @@ function App() {
         setInstanceID={setInstanceID}
         showBoxes={showBoxes}
         setShowBoxes={setShowBoxes}
+        setFilter={setFilter}
       ></Template>
       <Search
         instance={instance}

@@ -1,4 +1,5 @@
-const Instances = ({ instance, search }) => {
+//import { useState, useEffect } from "react";
+const Instances = ({ instance, search, filter }) => {
   let instancesSummary = [];
   let defaultKeywords = [
     "schema:name",
@@ -9,6 +10,9 @@ const Instances = ({ instance, search }) => {
     "subject",
     "variable",
   ];
+
+  //const [searchParam] = useState([`${defaultKeywords}`]);
+  //console.log(searchParam);
 
   instance.map((instance) => delete instance["@context"]);
   //search template json by keywords
@@ -42,18 +46,43 @@ const Instances = ({ instance, search }) => {
     instancesSummary.push(summaryData);
   }
 
-  instancesSummary = instancesSummary.filter(
-    (i) =>
-      i["schema:name"].toLowerCase().includes(search.toLowerCase()) ||
-      i["pav:lastUpdatedOn"].toLowerCase().includes(search.toLowerCase()) ||
-      i["schema:description"].toLowerCase().includes(search.toLowerCase()) ||
-      i["subject"].toString().toLowerCase().includes(search.toLowerCase()) ||
-      i["variable"].toString().toLowerCase().includes(search.toLowerCase())
-  );
+  function searchList(instancesSummary) {
+    const searchQ = instancesSummary[0] && Object.keys(instancesSummary[0]);
+    //const searchQ = instancesSummary && Object.keys(instancesSummary[0]);
+    return instancesSummary.filter((i) =>
+      searchQ.some(
+        (q) => i[q].toString().toLowerCase().indexOf(search.toLowerCase()) > -1
+      )
+    );
+  }
+  // instancesSummary = instancesSummary.filter(
+  //   (i) =>
+  //     i["pav:lastUpdatedOn"].toLowerCase().includes(search.toLowerCase()) ||
+  //     i["schema:description"].toLowerCase().includes(search.toLowerCase()) ||
+  //     i["schema:name"]
+  //       .toLowerCase()
+  //       .includes(
+  //         search.toLowerCase() ||
+  //     i["subject"].toLowerCase().includes(search.toLowerCase()) ||
+  //     i["variable"]
+  //             .toString()
+  //             .toLowerCase()
+  //             .includes(search.toLowerCase())
+  //       )
+
+  //   // i["subject"]
+  //   //   .toString()
+  //   //   .toLowerCase()
+  //   //   .includes(filter.toString().toLowerCase()) ||
+  //   // i["variable"]
+  //   //   .toString()
+  //   //   .toLowerCase()
+  //   //   .includes(filter.toString().toLowerCase())
+  // );
 
   return (
     <section className="instances">
-      {instancesSummary.map((data, i) => (
+      {searchList(instancesSummary).map((data, i) => (
         <div key={i} className="content">
           <h2>{data["schema:name"]}</h2>
           {/* <h5>AUTHOR: {data["pav:createdBy"]}</h5> */}
