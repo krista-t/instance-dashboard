@@ -23,8 +23,8 @@ const Instances = ({ instance, search, filter }) => {
       } else {
         if (keywords.includes(key)) {
           if (Array.isArray(obj[key])) {
-            let terms = [];
             let term = [];
+            let terms = [];
             for (let i = 0; i < obj[key].length; i++) {
               term = obj[key][i]["rdfs:label"];
               terms.push(term);
@@ -41,44 +41,36 @@ const Instances = ({ instance, search, filter }) => {
 
   let summaryData;
   for (let i = 0; i < instance.length; i++) {
-    // console.log(instance[i]);
     summaryData = iterateObject(instance[i], defaultKeywords, {});
     instancesSummary.push(summaryData);
   }
 
   function searchList(instancesSummary) {
     const searchQ = instancesSummary[0] && Object.keys(instancesSummary[0]);
-    //const searchQ = instancesSummary && Object.keys(instancesSummary[0]);
-    return instancesSummary.filter((i) =>
-      searchQ.some(
-        (q) => i[q].toString().toLowerCase().indexOf(search.toLowerCase()) > -1
-      )
-    );
-  }
-  // instancesSummary = instancesSummary.filter(
-  //   (i) =>
-  //     i["pav:lastUpdatedOn"].toLowerCase().includes(search.toLowerCase()) ||
-  //     i["schema:description"].toLowerCase().includes(search.toLowerCase()) ||
-  //     i["schema:name"]
-  //       .toLowerCase()
-  //       .includes(
-  //         search.toLowerCase() ||
-  //     i["subject"].toLowerCase().includes(search.toLowerCase()) ||
-  //     i["variable"]
-  //             .toString()
-  //             .toLowerCase()
-  //             .includes(search.toLowerCase())
-  //       )
 
-  //   // i["subject"]
-  //   //   .toString()
-  //   //   .toLowerCase()
-  //   //   .includes(filter.toString().toLowerCase()) ||
-  //   // i["variable"]
-  //   //   .toString()
-  //   //   .toLowerCase()
-  //   //   .includes(filter.toString().toLowerCase())
-  // );
+    // eslint-disable-next-line array-callback-return
+    return instancesSummary.filter((i) => {
+      if (!filter.length) {
+        return searchQ.some(
+          (q) =>
+            i[q].toString().toLowerCase().indexOf(search.toLowerCase()) > -1
+        );
+      }
+      if (filter) {
+        // return searchQ.some(
+        //   (q) =>
+        //     i[q]
+        //       .toString()
+        //       .toLowerCase()
+        //       .indexOf(filter.toString().toLowerCase()) > -1
+        // );
+        return (
+          i["subject"].some((s) => filter.indexOf(s) > -1) ||
+          i["variable"].some((v) => filter.indexOf(v) > -1)
+        );
+      }
+    });
+  }
 
   return (
     <section className="instances">

@@ -86,6 +86,8 @@ function App() {
       checked ? [...prev, value] : prev.filter((v) => v !== value)
     );
   };
+
+  //console.log(filter);
   return (
     <div className="App">
       <Header></Header>
