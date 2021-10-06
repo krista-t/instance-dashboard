@@ -9,6 +9,7 @@ const Instances = ({ instance, search, filter }) => {
     "rdfs:label",
     "subject",
     "variable",
+    "language",
   ];
 
   instance.map((instance) => delete instance["@context"]);
@@ -44,6 +45,7 @@ const Instances = ({ instance, search, filter }) => {
 
   function searchList(instancesSummary) {
     const searchQ = instancesSummary[0] && Object.keys(instancesSummary[0]);
+    console.log(instancesSummary);
 
     // eslint-disable-next-line array-callback-return
     return instancesSummary.filter((i) => {
@@ -53,12 +55,7 @@ const Instances = ({ instance, search, filter }) => {
             i[q].toString().toLowerCase().indexOf(search.toLowerCase()) > -1
         );
       }
-      // if (!filter.length) {
-      //   return searchQ.some(
-      //     (q) =>
-      //       i[q].toString().toLowerCase().indexOf(search.toLowerCase()) > -1
-      //   );
-      // }
+      // TODO: configure for facets
       if (filter) {
         return (
           i["subject"].some((s) => filter.indexOf(s) > -1) ||
