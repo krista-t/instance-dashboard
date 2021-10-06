@@ -11,9 +11,6 @@ const Instances = ({ instance, search, filter }) => {
     "variable",
   ];
 
-  //const [searchParam] = useState([`${defaultKeywords}`]);
-  //console.log(searchParam);
-
   instance.map((instance) => delete instance["@context"]);
   //search template json by keywords
   function iterateObject(obj, keywords, result = {}) {
@@ -50,20 +47,19 @@ const Instances = ({ instance, search, filter }) => {
 
     // eslint-disable-next-line array-callback-return
     return instancesSummary.filter((i) => {
-      if (!filter.length) {
+      if ((filter && search) || !filter.length) {
         return searchQ.some(
           (q) =>
             i[q].toString().toLowerCase().indexOf(search.toLowerCase()) > -1
         );
       }
+      // if (!filter.length) {
+      //   return searchQ.some(
+      //     (q) =>
+      //       i[q].toString().toLowerCase().indexOf(search.toLowerCase()) > -1
+      //   );
+      // }
       if (filter) {
-        // return searchQ.some(
-        //   (q) =>
-        //     i[q]
-        //       .toString()
-        //       .toLowerCase()
-        //       .indexOf(filter.toString().toLowerCase()) > -1
-        // );
         return (
           i["subject"].some((s) => filter.indexOf(s) > -1) ||
           i["variable"].some((v) => filter.indexOf(v) > -1)
