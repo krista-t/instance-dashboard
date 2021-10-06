@@ -6,7 +6,7 @@ const Search = ({ instance, search, setSearch }) => {
         <input
           id="search"
           type="text"
-          placeholder=" &#128269;"
+          placeholder=" &#128269;     enter search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />

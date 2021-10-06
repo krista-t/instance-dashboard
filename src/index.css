@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,300&display=swap");
 :root {
-  --color-white: #ffff;
+  --color-white: rgb(237, 233, 233);
   --color-black: #112131;
   --color-grey-100: #f8f9fc;
   --color-grey-200: #dee3ed;
@@ -10,29 +10,24 @@
   --color-grey-600: #2f3237;
   --color-grey-700: #1d1e20;
   --color-blue: #58797f;
-  --color-adjacent-blue:#0f7686;
-  
+  --color-adjacent-blue: #0f7686;
 }
 * {
   box-sizing: border-box;
   margin: 0;
 }
 body {
-  font-family: 'Roboto', 
-     'Helvetica Neue',
-     'Arial',
-    sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:var( --color-grey-100);
+  font-family: "Roboto", "Helvetica Neue", "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-grey-100);
 }
 
 .App {
-width: 100vw; 
-height: 100vh;
-display: grid;
-grid-template-columns: 25% 75%;
-grid-template-rows: 15% 8% auto  10%;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-template-rows: 15% 8% auto 10%;
 }
-

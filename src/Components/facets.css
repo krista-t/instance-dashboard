@@ -7,6 +7,16 @@
   max-width: 19vw;
   overflow-y: scroll;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: var(--color-grey-400);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-adjacent-blue);
+}
+
 .facets-title-container {
   padding: 5px 10px;
 }
@@ -72,9 +82,4 @@ input[type="checkbox"] {
 [type="checkbox"]:checked {
   filter: hue-rotate(325deg);
   -webkit-filter: hue-rotate(325deg);
-}
-
-.active {
-  background-color: red;
-  color: #fff;
 }

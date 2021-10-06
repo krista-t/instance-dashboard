@@ -6,7 +6,7 @@
   justify-content: flex-start;
 }
 
-.searchbar input[type="text"] {
+.searchbar input {
   width: 55vw;
   min-height: 45px;
   font-size: 1rem;
@@ -16,6 +16,8 @@
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--color-white);
 }
 
 .searchbar label {

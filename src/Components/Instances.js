@@ -45,16 +45,23 @@ const Instances = ({ instance, search, filter }) => {
 
   function searchList(instancesSummary) {
     const searchQ = instancesSummary[0] && Object.keys(instancesSummary[0]);
-    console.log(instancesSummary);
-
+    const filtered = filter.map((f) => f.toLowerCase());
+    console.log(filtered);
     // eslint-disable-next-line array-callback-return
     return instancesSummary.filter((i) => {
-      if ((filter && search) || !filter.length) {
+      if (filtered.includes(search)) {
         return searchQ.some(
           (q) =>
             i[q].toString().toLowerCase().indexOf(search.toLowerCase()) > -1
         );
       }
+      if (!filter.length) {
+        return searchQ.some(
+          (q) =>
+            i[q].toString().toLowerCase().indexOf(search.toLowerCase()) > -1
+        );
+      }
+
       // TODO: configure for facets
       if (filter) {
         return (
