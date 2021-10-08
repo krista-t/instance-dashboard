@@ -77,7 +77,7 @@ function App() {
   const [showBoxes, setShowBoxes] = useState({});
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
-
+  console.log(filter.length);
   const handleChecked = (e, i) => {
     const checked = e.target.checked;
     const value = e.target.value;

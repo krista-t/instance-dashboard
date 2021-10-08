@@ -1,6 +1,11 @@
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
-
-const Facets = ({ facets, showBoxes, setShowBoxes, handleChecked }) => {
+import { toKebab } from "../configuration/fixNames";
+const Facets = ({
+  facets,
+  showBoxes,
+  setShowBoxes,
+  handleChecked,
+}) => {
   const toggle = (i) => {
     setShowBoxes((prevState) => ({
       ...prevState,
@@ -16,15 +21,23 @@ const Facets = ({ facets, showBoxes, setShowBoxes, handleChecked }) => {
             {Object.keys(facets).map((key, i) => {
               return (
                 <div key={i}>
-                  <li onClick={() => toggle(i, key)} value={key}>
-                    {key}
+                  <li
+                    onClick={() => toggle(i, key)}
+                    value={toKebab(key)}
+                  >
+                    {toKebab(key)}
                     <span className="icon">
-                      {showBoxes[i] ? <FaAngleUp /> : <FaAngleDown />}
+                      {showBoxes[i] ? (
+                        <FaAngleUp />
+                      ) : (
+                        <FaAngleDown />
+                      )}
                     </span>
                   </li>
                   <br />
                   {Object.keys(facets[key]).map((item) => {
-                    let boxVal = facets[key][item]["rdfs:label"];
+                    let boxVal =
+                      facets[key][item]["rdfs:label"];
                     return (
                       <div key={boxVal}>
                         {showBoxes[i] ? (
@@ -33,9 +46,13 @@ const Facets = ({ facets, showBoxes, setShowBoxes, handleChecked }) => {
                               type="checkbox"
                               name={boxVal}
                               value={boxVal}
-                              onChange={(e) => handleChecked(e, i)}
+                              onChange={(e) =>
+                                handleChecked(e, i)
+                              }
                             />
-                            <label forhtml={boxVal}>{boxVal}</label>
+                            <label forhtml={boxVal}>
+                              {boxVal}
+                            </label>
                             <br />
                           </div>
                         ) : null}

@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import "./Components/header.css";
-import "./Components/template.css";
-import "./Components/search.css";
-import "./Components/facets.css";
-import "./Components/instances.css";
-import "./Components/footer.css";
+import "./style/header.css";
+import "./style/template.css";
+import "./style/search.css";
+import "./style/facets.css";
+import "./style/instances.css";
+import "./style/footer.css";
 import App from "./App";
 
 ReactDOM.render(
