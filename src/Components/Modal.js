@@ -22,7 +22,6 @@ const Modal = ({
   if (isSelected != null) {
     instance.map((instance) => delete instance["@context"]);
     isPrimitive();
-    //TODO: promini u map, ne triba loopati korz sve rezultate templatea
     instance.map((i) => {
       let detailData = iterateObject(
         instance[isSelected],
@@ -130,7 +129,6 @@ const Modal = ({
         </div>
       </div>
     </>,
-    //make sure ther is comma after fragment , and write where you want to render this
     document.getElementById("portal")
   );
 };
