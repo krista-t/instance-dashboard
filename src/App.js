@@ -4,6 +4,7 @@ import Template from "./Components/Template";
 import Search from "./Components/Search";
 import Facets from "./Components/Facets";
 import Instances from "./Components/Instances";
+import Modal from "./Components/Modal";
 import Footer from "./Components/Footer";
 
 //GET TEMPLATE IDs
@@ -39,7 +40,9 @@ function App() {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch(`${API_facets}${facetID}`);
+        const response = await fetch(
+          `${API_facets}${facetID}`
+        );
         const data = await response.json();
         //console.log(data);
         setFacets(data);
@@ -63,7 +66,9 @@ function App() {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch(`${API_instance}${instanceID}`);
+        const response = await fetch(
+          `${API_instance}${instanceID}`
+        );
         const data = await response.json();
         //console.log(data);
         setInstance(data);
@@ -77,17 +82,24 @@ function App() {
   const [showBoxes, setShowBoxes] = useState({});
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState([]);
-  console.log(filter.length);
+  //MODAL HOOK
+  const [isOpen, setIsOpen] = useState(false);
+  //SELECTED TITLE FOR MODAL
+  const [isSelected, setIsSelected] = useState(null);
   const handleChecked = (e, i) => {
     const checked = e.target.checked;
     const value = e.target.value;
     setFilter((prev) =>
       //if it´s checked copy prev val and add new in arr, else filter previous, and remove what is unchecked
-      checked ? [...prev, value] : prev.filter((v) => v !== value)
+      checked
+        ? [...prev, value]
+        : prev.filter((v) => v !== value)
     );
   };
-
-  //console.log(filter);
+  const handleModal = (i) => {
+    setIsOpen(true);
+    setIsSelected(i);
+  };
   return (
     <div className="App">
       <Header></Header>
@@ -119,7 +131,16 @@ function App() {
         facets={facets}
         handleChecked={handleChecked}
         filter={filter}
+        handleModal={handleModal}
+        setIsSelected={setIsSelected}
       ></Instances>
+      <Modal
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        instance={instance}
+        isSelected={isSelected}
+        handleModal={handleModal}
+      ></Modal>
       <Footer></Footer>
     </div>
   );

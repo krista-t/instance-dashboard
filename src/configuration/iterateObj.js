@@ -8,6 +8,8 @@ export let defaultKeywords = [
   "subject",
   "variable",
   "externalCondition",
+  "@id",
+  "rdfs:label",
 ];
 export function isPrimitive(val) {
   if (typeof val == "object" || typeof val == "function") {

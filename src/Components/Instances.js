@@ -3,7 +3,12 @@ import {
   isPrimitive,
   iterateObject,
 } from "../configuration/iterateObj";
-const Instances = ({ instance, search, filter }) => {
+const Instances = ({
+  instance,
+  search,
+  filter,
+  handleModal,
+}) => {
   let instancesSummary = [];
   instance.map((instance) => delete instance["@context"]);
   isPrimitive();
@@ -57,7 +62,11 @@ const Instances = ({ instance, search, filter }) => {
   return (
     <section className="instances">
       {searchList(instancesSummary).map((data, i) => (
-        <div key={i} className="content">
+        <div
+          key={i}
+          className="content"
+          onClick={() => handleModal(i)}
+        >
           <h2>
             {data["title"]}
             {data["catalogTitle"]}
