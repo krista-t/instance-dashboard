@@ -1,9 +1,10 @@
+import logo from "../assets/logo.svg";
 const Header = () => {
   return (
     <header className="header-container">
       <div className="flex-container">
         <div className="logo">
-          <img src="./_logo_main_.png" alt="" />
+          <img height={100} src={logo} alt="logo" />
         </div>
         <nav className="navigation">
           <ul>

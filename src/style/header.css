@@ -2,7 +2,7 @@
   grid-area: 1/-1;
   background-color: var(--color-blue);
   width: 100vw;
-  max-height: 85px;
+  max-height: 100px;
   position: fixed;
 }
 .flex-container {
@@ -21,8 +21,7 @@
   padding: 20px;
   color: var(--color-grey-100);
 }
-.logo img {
-  max-width: 200px;
+.logo {
   z-index: 100;
-  margin-top: -25px;
+  margin: -35px 5px;
 }
