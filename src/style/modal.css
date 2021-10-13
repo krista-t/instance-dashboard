@@ -12,7 +12,7 @@
 
 .inner-modal {
   width: 60%;
-  height: 70%;
+  height: 75%;
   position: relative;
   top: 50%;
   left: 50%;
@@ -48,8 +48,8 @@
 }
 .close {
   position: absolute;
-  top: 3%;
-  right: 3%;
+  top: 0;
+  right: 1.5%;
   font-size: 3rem;
   cursor: pointer;
   color: var(--color-blue);
@@ -72,10 +72,13 @@
 }
 .modal-data p,
 .modal-btns {
-  padding: 25px;
+  padding: 12px;
   margin: 0 25px;
 }
 
+.modal-btns {
+  margin: 25px;
+}
 .modal-btns button {
   padding: 10px;
   text-transform: uppercase;

@@ -1,15 +1,20 @@
 export let defaultKeywords = [
   "title",
   "publisher",
+  "pav:createdBy",
   "catalogDescription",
   "catalogTitle",
   "description",
   "pav:lastUpdatedOn",
+  "pav:createdOn",
   "subject",
   "variable",
+  "otherVariable",
   "externalCondition",
+  "activity",
   "@id",
   "rdfs:label",
+  "language",
 ];
 export function isPrimitive(val) {
   if (typeof val == "object" || typeof val == "function") {

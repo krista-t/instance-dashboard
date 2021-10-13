@@ -52,9 +52,13 @@ const Modal = ({
                 </span>
               </p>
               <p>
-                AUTHORS:
+                AUTHORS:{" "}
                 <span>
-                  {detailedList[isSelected]["authors"]}
+                  {
+                    detailedList[isSelected][
+                      "pav:createdBy"
+                    ]
+                  }
                 </span>
               </p>
               <p>
@@ -64,27 +68,11 @@ const Modal = ({
                 </span>
               </p>
               <p>
-                CREATED ON:
-                <span>
-                  {detailedList[isSelected]["createdOn"]}
-                </span>
-              </p>
-              <p>
-                LAST UPDATED ON:{" "}
+                CREATED ON:{" "}
                 <span>
                   {
                     detailedList[isSelected][
-                      "pav:lastUpdatedOn"
-                    ]
-                  }
-                </span>
-              </p>
-              <p>
-                LAST UPDATED ON:
-                <span>
-                  {
-                    detailedList[isSelected][
-                      "pav:lastUpdatedOn"
+                      "pav:createdOn"
                     ]
                   }
                 </span>
@@ -99,6 +87,64 @@ const Modal = ({
                   }
                 </span>
               </p>
+              {detailedList[isSelected]["subject"] ? (
+                <p>
+                  SUBJECT:{" "}
+                  <span>
+                    {detailedList[isSelected]["subject"] +
+                      " "}
+                  </span>
+                </p>
+              ) : null}
+
+              {detailedList[isSelected]["variable"] ? (
+                <p>
+                  VARIABLE:{" "}
+                  <span>
+                    {detailedList[isSelected]["variable"] +
+                      " "}
+                  </span>
+                </p>
+              ) : null}
+              {detailedList[isSelected]["variable"] ? (
+                <p>
+                  VARIABLE:{" "}
+                  <span>
+                    {detailedList[isSelected]["variable"] +
+                      " "}
+                  </span>
+                </p>
+              ) : null}
+              {detailedList[isSelected]["otherVariable"] ? (
+                <p>
+                  OTHER VARIABLE:{" "}
+                  <span>
+                    {detailedList[isSelected]["variable"] +
+                      " "}
+                  </span>
+                </p>
+              ) : null}
+              {detailedList[isSelected][
+                "externalCondition"
+              ] ? (
+                <p>
+                  EXTERNAL CONDITION:{" "}
+                  <span>
+                    {detailedList[isSelected][
+                      "externalCondition"
+                    ] + " "}
+                  </span>
+                </p>
+              ) : null}
+              {detailedList[isSelected]["activity"] ? (
+                <p>
+                  ACTIVITY:{" "}
+                  <span>
+                    {detailedList[isSelected]["activity"] +
+                      " "}
+                  </span>
+                </p>
+              ) : null}
             </div>
             <span className="modal-btns">
               {" "}

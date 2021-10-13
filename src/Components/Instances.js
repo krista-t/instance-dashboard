@@ -80,11 +80,11 @@ const Instances = ({
             {/* {data["description"]}
             {data["catalogDescription"]} */}
           </p>{" "}
-          {data["subject"] ? (
+          {/* {data["subject"] ? (
             <p>
               SUBJECT: <span>{data["subject"] + " "}</span>
             </p>
-          ) : null}
+          ) : null} */}
           {/* TODO: move to modal */}
           {/* {data["variable"] ? (
             <p>
