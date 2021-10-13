@@ -74,16 +74,24 @@ const Instances = ({
           {/* <h5>AUTHOR: {data["pav:createdBy"]}</h5> */}
           <h4>LAST UPDATED: {data["pav:lastUpdatedOn"]}</h4>
           <p className="description">
-            {data["description"]}{" "}
-            {data["catalogDescription"]}
-          </p>
-
-          <p>
-            SUBJECTS: <span>{data["subject"] + " "}</span>
-          </p>
-          <p>
-            VARIABLES: <span>{data["variable"]} </span>
-          </p>
+            {data["description"].length <= 350
+              ? data["description"]
+              : `${data["description"].slice(0, 350)}...`}
+            {/* {data["description"]}
+            {data["catalogDescription"]} */}
+          </p>{" "}
+          {data["subject"] ? (
+            <p>
+              SUBJECT: <span>{data["subject"] + " "}</span>
+            </p>
+          ) : null}
+          {/* TODO: move to modal */}
+          {/* {data["variable"] ? (
+            <p>
+              VARIABLE:
+              <span>{"" + data["variable"] + " "}</span>
+            </p>
+          ) : null} */}
         </div>
       ))}
     </section>
