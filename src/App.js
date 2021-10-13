@@ -33,7 +33,7 @@ function App() {
   const [facets, setFacets] = useState([]);
   //SET DEFAULT STATE FOR FACETS REQuest
   const [facetID, setFacetID] = useState(
-    "https://repo.metadatacenter.org/templates/2230186e-2890-4d38-9206-ded583fccafd"
+    "https://repo.metadatacenter.org/templates/2059d13b-b0f2-4325-84ee-0f69785829d5"
   );
 
   //CHANGE FACET STATE STATE DEPENDING ON TEMPLATE ID
@@ -60,7 +60,7 @@ function App() {
   const [instance, setInstance] = useState([]);
   //SET DEFAULT STATE FOR INSTANCE REQuest
   const [instanceID, setInstanceID] = useState(
-    "https://repo.metadatacenter.org/templates/2230186e-2890-4d38-9206-ded583fccafd"
+    "https://repo.metadatacenter.org/templates/2059d13b-b0f2-4325-84ee-0f69785829d5"
   );
   //CHANGE FACET STATE STATE DEPENDING ON TEMPLATE ID
   useEffect(() => {

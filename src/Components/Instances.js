@@ -3,6 +3,7 @@ import {
   isPrimitive,
   iterateObject,
 } from "../configuration/iterateObj";
+import { sliceTxt } from "../configuration/sliceTxt";
 const Instances = ({
   instance,
   search,
@@ -74,11 +75,12 @@ const Instances = ({
           {/* <h5>AUTHOR: {data["pav:createdBy"]}</h5> */}
           <h4>LAST UPDATED: {data["pav:lastUpdatedOn"]}</h4>
           <p className="description">
-            {data["description"].length <= 350
+            {/* {data["description"].length <= 350
               ? data["description"]
-              : `${data["description"].slice(0, 350)}...`}
-            {/* {data["description"]}
-            {data["catalogDescription"]} */}
+              : `${data["description"].slice(0, 350)}...`} */}
+
+            {sliceTxt(data["description"])}
+            {sliceTxt(data["catalogDescription"])}
           </p>{" "}
           {/* {data["subject"] ? (
             <p>

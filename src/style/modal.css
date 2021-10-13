@@ -105,7 +105,10 @@
 }
 .modal-data p {
   font-size: 1.3rem;
+  font-weight: 400;
 }
-.modal-data p span {
+.modal-data span {
   font-size: 1.2rem;
+  font-weight: 100;
+  color: var(--color-grey-600);
 }
