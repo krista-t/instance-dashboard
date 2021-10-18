@@ -1,4 +1,9 @@
 import { useState, useEffect } from "react";
+import {
+  Route,
+  Switch,
+  BrowserRouter,
+} from "react-router-dom";
 import Header from "./Components/Header";
 import Template from "./Components/Template";
 import Search from "./Components/Search";
@@ -102,45 +107,54 @@ function App() {
   };
   return (
     <div className="App">
-      <Header></Header>
-      <Template
-        templates={templates}
-        facetID={facetID}
-        setFacetID={setFacetID}
-        setInstanceID={setInstanceID}
-        showBoxes={showBoxes}
-        setShowBoxes={setShowBoxes}
-        setFilter={setFilter}
-      ></Template>
-      <Search
-        instance={instance}
-        search={search}
-        setSearch={setSearch}
-      ></Search>
-      <Facets
-        facets={facets}
-        showBoxes={showBoxes}
-        setShowBoxes={setShowBoxes}
-        handleChecked={handleChecked}
-        filter={filter}
-        setFilter={setFilter}
-      ></Facets>
-      <Instances
-        instance={instance}
-        search={search}
-        facets={facets}
-        handleChecked={handleChecked}
-        filter={filter}
-        handleModal={handleModal}
-        setIsSelected={setIsSelected}
-      ></Instances>
-      <Modal
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-        instance={instance}
-        isSelected={isSelected}
-        handleModal={handleModal}
-      ></Modal>
+      <BrowserRouter>
+        <Header></Header>
+        <Switch>
+          <Route exact path="/">
+            <Template
+              templates={templates}
+              facetID={facetID}
+              setFacetID={setFacetID}
+              setInstanceID={setInstanceID}
+              showBoxes={showBoxes}
+              setShowBoxes={setShowBoxes}
+              setFilter={setFilter}
+            ></Template>
+            <Search
+              instance={instance}
+              search={search}
+              setSearch={setSearch}
+            ></Search>
+            <Facets
+              facets={facets}
+              showBoxes={showBoxes}
+              setShowBoxes={setShowBoxes}
+              handleChecked={handleChecked}
+              filter={filter}
+              setFilter={setFilter}
+            ></Facets>
+            <Instances
+              instance={instance}
+              search={search}
+              facets={facets}
+              handleChecked={handleChecked}
+              filter={filter}
+              handleModal={handleModal}
+              setIsSelected={setIsSelected}
+            ></Instances>
+            <Modal
+              open={isOpen}
+              onClose={() => setIsOpen(false)}
+              instance={instance}
+              isSelected={isSelected}
+              handleModal={handleModal}
+            ></Modal>
+          </Route>
+          <Route exact path="/dashboard">
+            <Dashboard facets={facets}></Dashboard>
+          </Route>
+        </Switch>
+      </BrowserRouter>
       <Footer></Footer>
     </div>
   );

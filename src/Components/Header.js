@@ -1,4 +1,5 @@
 import logo from "../assets/logo.svg";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header className="header-container">
@@ -8,8 +9,18 @@ const Header = () => {
         </div>
         <nav className="navigation">
           <ul>
-            <li>HOME</li>
-            <li>DASHBOARD</li>
+            <Link
+              to={"/"}
+              style={{ textDecoration: "none" }}
+            >
+              <li>HOME</li>
+            </Link>{" "}
+            <Link
+              to={"/dashboard"}
+              style={{ textDecoration: "none" }}
+            >
+              <li>DASHBOARD</li>
+            </Link>{" "}
             <li style={{ visibility: "hidden" }}>LINK</li>
           </ul>
         </nav>
