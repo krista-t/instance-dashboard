@@ -6,7 +6,7 @@ const Dashboard = ({ facets }) => {
   return (
     <div className="chart-container">
       {Object.keys(facets).length === 0 ? (
-        "Nothing to Show"
+        <h3>No Data to Show</h3>
       ) : (
         <Plot
           data={[
@@ -47,7 +47,9 @@ const Dashboard = ({ facets }) => {
         />
       )}
 
-      {Object.keys(facets).length === 0 ? null : (
+      {Object.keys(facets).length === 0 ? (
+        <h3>No Data to Show</h3>
+      ) : (
         <Plot
           data={[
             {

@@ -9,6 +9,7 @@ import "./style/facets.css";
 import "./style/instances.css";
 import "./style/modal.css";
 import "./style/footer.css";
+import "./style/dashboard.css";
 
 ReactDOM.render(
   <React.StrictMode>
