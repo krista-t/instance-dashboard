@@ -10,6 +10,7 @@ import Search from "./Components/Search";
 import Facets from "./Components/Facets";
 import Instances from "./Components/Instances";
 import Modal from "./Components/Modal";
+import Dashboard from "./Components/Dashboard";
 import Footer from "./Components/Footer";
 
 //GET TEMPLATE IDs
