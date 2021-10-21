@@ -5,6 +5,7 @@ const Facets = ({
   showBoxes,
   setShowBoxes,
   handleChecked,
+  setFilter,
 }) => {
   const toggle = (i) => {
     setShowBoxes((prevState) => ({
@@ -12,10 +13,26 @@ const Facets = ({
       [i]: !Boolean(prevState[i]),
     }));
   };
-
+  //reset filters
+  const resetFilters = () => {
+    //uncheckRef.current.checked = false;
+    setFilter([]);
+    setShowBoxes({});
+  };
   return (
     <section className="facets">
       <div className="facets-container">
+        {Object.keys(facets).length !== 0 ? (
+          <p className="filters">
+            filter by:{" "}
+            <span>
+              <button onClick={() => resetFilters()}>
+                {" "}
+                reset filters
+              </button>
+            </span>
+          </p>
+        ) : null}
         <form>
           <ul className="facets-title-container">
             {Object.keys(facets).map((key, i) => {
