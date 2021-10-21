@@ -63,7 +63,8 @@
 }
 input[type="checkbox"] + label {
   filter: invert(20%) hue-rotate(18deg) brightness(1.6);
-  -webkit-filter: invert(20%) hue-rotate(18deg) brightness(1.6);
+  -webkit-filter: invert(20%) hue-rotate(18deg)
+    brightness(1.6);
   cursor: pointer;
 }
 input[type="checkbox"] {
@@ -82,4 +83,15 @@ input[type="checkbox"] {
 [type="checkbox"]:checked {
   filter: hue-rotate(325deg);
   -webkit-filter: hue-rotate(325deg);
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .facets-container {
+    margin: 0 auto;
+    max-height: 55vw;
+    max-width: 19vw;
+    overflow-y: scroll;
+  }
+  .facets li {
+    font-size: 1rem;
+  }
 }

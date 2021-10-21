@@ -118,7 +118,7 @@
   font-weight: 100;
   color: var(--color-grey-600);
 }
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+@media only screen and (min-device-width: 375px) and (max-device-width: 767px) {
   .inner-modal {
     width: 95%;
     height: 100%;
@@ -141,5 +141,12 @@
   .modal-btns button {
     max-width: 130px;
     text-align: left;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .inner-modal {
+    width: 95%;
+    height: 95%;
+    overflow-y: scroll;
   }
 }
