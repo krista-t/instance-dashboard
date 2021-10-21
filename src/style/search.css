@@ -24,9 +24,10 @@
   display: none;
 }
 
-.search-wrapper h3 {
-  margin: 20px 0 0 75px;
+.result {
+  margin: 25px 0 0 75px;
   color: var(--color-grey-600);
   text-transform: uppercase;
   font-weight: 200;
+  font-size: 1.2rem;
 }

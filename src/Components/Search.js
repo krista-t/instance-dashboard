@@ -12,7 +12,7 @@ const Search = ({ instance, search, setSearch }) => {
         />
       </div>
       <span>
-        <h3>{instance.length} results</h3>
+        <p className="result">{instance.length} results</p>
       </span>
     </section>
   );

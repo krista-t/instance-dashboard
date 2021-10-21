@@ -2,7 +2,7 @@
   grid-area: 1/-1;
   background-color: var(--color-blue);
   width: 100vw;
-  max-height: 100px;
+  height: 100px;
   position: fixed;
 }
 .flex-container {
@@ -10,7 +10,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
-  padding: 30px;
+  align-items: flex-end;
 }
 .navigation ul {
   display: flex;
@@ -18,10 +18,21 @@
   list-style-type: none;
 }
 .navigation li {
-  padding: 20px;
+  padding: 15px;
   color: var(--color-grey-100);
+  font-size: large;
 }
 .logo {
   z-index: 100;
-  margin: -30px 5px;
+  margin: 0px 5px;
+}
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  .flex-container {
+    flex-wrap: nowrap;
+  }
+  .navigation li {
+    padding: 10px;
+    margin-left: 25px;
+    font-size: 1rem;
+  }
 }

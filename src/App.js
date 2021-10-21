@@ -102,6 +102,7 @@ function App() {
         : prev.filter((v) => v !== value)
     );
   };
+  console.log(filter);
   const handleModal = (i) => {
     setIsOpen(true);
     setIsSelected(i);
