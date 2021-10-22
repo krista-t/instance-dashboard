@@ -1,8 +1,13 @@
 import {
   defaultKeywords,
-  isPrimitive,
-  iterateObject,
+  getIntancesSummary,
 } from "../configuration/iterateObj";
+
+import {
+  facetedSearch,
+  freeTextSearch,
+} from "../configuration/instanceSearchUtils";
+
 import { sliceTxt } from "../configuration/sliceTxt";
 const Instances = ({
   instance,
@@ -10,64 +15,21 @@ const Instances = ({
   filter,
   handleModal,
 }) => {
-  let instancesSummary = [];
-  instance.map((instance) => delete instance["@context"]);
-  isPrimitive();
-  let summaryData;
-  for (let i = 0; i < instance.length; i++) {
-    summaryData = iterateObject(
-      instance[i],
-      defaultKeywords,
-      {}
-    );
-    instancesSummary.push(summaryData);
-  }
+  let instancesSummary = getIntancesSummary(
+    instance,
+    defaultKeywords
+  );
 
-  function searchList(instancesSummary) {
-    const searchQ =
-      instancesSummary[0] &&
-      Object.keys(instancesSummary[0]);
-    const filtered = filter.map((f) => f.toLowerCase());
-    // eslint-disable-next-line array-callback-return
-    return instancesSummary.filter((i) => {
-      if (filtered.includes(search)) {
-        return searchQ.some(
-          (q) =>
-            i[q]
-              .toString()
-              .toLowerCase()
-              .indexOf(search.toLowerCase()) > -1
-        );
-      }
-      if (!filter.length) {
-        return searchQ.some(
-          (q) =>
-            i[q]
-              .toString()
-              .toLowerCase()
-              .indexOf(search.toLowerCase()) > -1
-        );
-      }
-
-      // TODO: configure for facets
-      if (filter) {
-        return (
-          i["subject"].some(
-            (s) => filter.indexOf(s) > -1
-          ) ||
-          i["variable"].some((v) => filter.indexOf(v) > -1)
-        );
-      }
-    });
-  }
   return (
     <section className="instances">
-      {searchList(instancesSummary).map((data, i) => (
+      {freeTextSearch(
+        search,
+        facetedSearch(filter, instancesSummary)
+      ).map((data, i) => (
         <div
           key={i}
           className="content"
-          onClick={() => handleModal(i)}
-        >
+          onClick={() => handleModal(i)}>
           <h2>
             {data["title"]}
             {data["catalogTitle"]}

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 import ReactDom from "react-dom";
 import { BiXCircle } from "react-icons/bi";
 import {
@@ -21,7 +22,7 @@ const Modal = ({
 
   if (isSelected != null) {
     instance.map((instance) => delete instance["@context"]);
-    isPrimitive();
+    // isPrimitive();
     instance.map((i) => {
       let detailData = iterateObject(
         instance[isSelected],
@@ -49,22 +50,38 @@ const Modal = ({
                 TITLE:{" "}
                 <span>
                   {detailedList[isSelected]["title"]}{" "}
+                  {detailedList[isSelected]["catalogTitle"]}{" "}
                 </span>
               </p>
               <p>
                 AUTHORS:{" "}
                 <span>
-                  {
-                    detailedList[isSelected][
-                      "pav:createdBy"
-                    ]
-                  }
+                  {" "}
+                  <a
+                    href={
+                      detailedList[isSelected][
+                        "pav:createdBy"
+                      ]
+                    }
+                    target="_blank"
+                    rel="noreferrer">
+                    {
+                      detailedList[isSelected][
+                        "pav:createdBy"
+                      ]
+                    }
+                  </a>
                 </span>
               </p>
               <p>
                 DESCRIPTION:&nbsp;
                 <span>
                   {detailedList[isSelected]["description"]}
+                  {
+                    detailedList[isSelected][
+                      "catalogDescription"
+                    ]
+                  }
                 </span>
               </p>
               <p>
@@ -91,27 +108,20 @@ const Modal = ({
                 <p>
                   SUBJECT:{" "}
                   <span>
-                    {detailedList[isSelected]["subject"] +
-                      " "}
-                  </span>
-                </p>
-              ) : null}
-
-              {detailedList[isSelected]["variable"] ? (
-                <p>
-                  VARIABLE:{" "}
-                  <span>
-                    {detailedList[isSelected]["variable"] +
-                      " "}
+                    {detailedList[isSelected][
+                      "subject"
+                    ].join(", ")}
                   </span>
                 </p>
               ) : null}
               {detailedList[isSelected]["variable"] ? (
                 <p>
-                  VARIABLE:{" "}
+                  VARIABLE:&nbsp;
                   <span>
-                    {detailedList[isSelected]["variable"] +
-                      " "}
+                    {" " +
+                      detailedList[isSelected][
+                        "variable"
+                      ].join(",  ")}
                   </span>
                 </p>
               ) : null}
@@ -119,8 +129,10 @@ const Modal = ({
                 <p>
                   OTHER VARIABLE:{" "}
                   <span>
-                    {detailedList[isSelected]["variable"] +
-                      " "}
+                    {" " +
+                      detailedList[isSelected][
+                        "variable"
+                      ].join(",  ")}
                   </span>
                 </p>
               ) : null}
@@ -132,7 +144,7 @@ const Modal = ({
                   <span>
                     {detailedList[isSelected][
                       "externalCondition"
-                    ] + " "}
+                    ].join(",  ")}
                   </span>
                 </p>
               ) : null}
@@ -140,8 +152,9 @@ const Modal = ({
                 <p>
                   ACTIVITY:{" "}
                   <span>
-                    {detailedList[isSelected]["activity"] +
-                      " "}
+                    {detailedList[isSelected][
+                      "activity"
+                    ].join(",  ")}
                   </span>
                 </p>
               ) : null}
@@ -152,8 +165,7 @@ const Modal = ({
                 <a
                   href={cedarLink}
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   {" "}
                   See in Cedar
                 </a>
@@ -163,8 +175,7 @@ const Modal = ({
                 <a
                   href={openViewLink}
                   target="_blank"
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   See in OpenView
                 </a>
               </button>

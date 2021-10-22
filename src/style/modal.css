@@ -116,7 +116,7 @@
 .modal-data span {
   font-size: 1.1rem;
   font-weight: 100;
-  color: var(--color-grey-600);
+  color: var(--color-grey-500);
 }
 @media only screen and (min-device-width: 375px) and (max-device-width: 767px) {
   .inner-modal {

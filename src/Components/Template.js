@@ -12,7 +12,7 @@ const Template = ({
   const [templateVal, setTemplateVal] = useState("");
 
   useEffect(() => {
-    setTemplateVal(Object.values(templates)[0]);
+    setTemplateVal(Object.values(templates)[2]);
   }, [templates]);
 
   const [show, setShow] = useState(false);
@@ -31,7 +31,9 @@ const Template = ({
   };
   return (
     <section className="template-select">
-      <div className="value-container" onClick={(e) => handleToggle(e)}>
+      <div
+        className="value-container"
+        onClick={(e) => handleToggle(e)}>
         {templateVal}
         <span>
           <FaAngleDown />
@@ -43,8 +45,7 @@ const Template = ({
             hidden={!show}
             key={key}
             value={value}
-            onClick={(e) => handleChange(e, key)}
-          >
+            onClick={(e) => handleChange(e, key)}>
             {value}
           </li>
         ))}

@@ -35,12 +35,12 @@ function App() {
   //GET FACETS IDs
   const API_facets =
     "https://data.windenergy.dtu.dk/api/sesame/v1/get-facets?templateID= ";
+  const defaultTemplateID =
+    "https://repo.metadatacenter.org/templates/2230186e-2890-4d38-9206-ded583fccafd";
   //STATE FOR FACETS
   const [facets, setFacets] = useState([]);
   //SET DEFAULT STATE FOR FACETS REQuest
-  const [facetID, setFacetID] = useState(
-    "https://repo.metadatacenter.org/templates/2059d13b-b0f2-4325-84ee-0f69785829d5"
-  );
+  const [facetID, setFacetID] = useState(defaultTemplateID);
 
   //CHANGE FACET STATE STATE DEPENDING ON TEMPLATE ID
   useEffect(() => {
@@ -66,7 +66,7 @@ function App() {
   const [instance, setInstance] = useState([]);
   //SET DEFAULT STATE FOR INSTANCE REQuest
   const [instanceID, setInstanceID] = useState(
-    "https://repo.metadatacenter.org/templates/2059d13b-b0f2-4325-84ee-0f69785829d5"
+    defaultTemplateID
   );
   //CHANGE FACET STATE STATE DEPENDING ON TEMPLATE ID
   useEffect(() => {
@@ -87,22 +87,26 @@ function App() {
 
   const [showBoxes, setShowBoxes] = useState({});
   const [search, setSearch] = useState("");
+  // const [filter, setFilter] = useState([]);
   const [filter, setFilter] = useState([]);
   //MODAL HOOK
   const [isOpen, setIsOpen] = useState(false);
   //SELECTED TITLE FOR MODAL
   const [isSelected, setIsSelected] = useState(null);
-  const handleChecked = (e, i) => {
+
+  const handleChecked = (e) => {
     const checked = e.target.checked;
-    const value = e.target.value;
+    const termID = e.target.value;
+    const parentID =
+      e.target.parentElement.parentElement.parentElement.id;
     setFilter((prev) =>
-      //if it´s checked copy prev val and add new in arr, else filter previous, and remove what is unchecked
       checked
-        ? [...prev, value]
-        : prev.filter((v) => v !== value)
+        ? [...prev, [parentID, termID]]
+        : prev.filter(function (el) {
+            return el[1] != termID;
+          })
     );
   };
-  console.log(filter);
   const handleModal = (i) => {
     setIsOpen(true);
     setIsSelected(i);
@@ -120,21 +124,18 @@ function App() {
               setInstanceID={setInstanceID}
               showBoxes={showBoxes}
               setShowBoxes={setShowBoxes}
-              setFilter={setFilter}
-            ></Template>
+              setFilter={setFilter}></Template>
             <Search
               instance={instance}
               search={search}
-              setSearch={setSearch}
-            ></Search>
+              setSearch={setSearch}></Search>
             <Facets
               facets={facets}
               showBoxes={showBoxes}
               setShowBoxes={setShowBoxes}
               handleChecked={handleChecked}
               filter={filter}
-              setFilter={setFilter}
-            ></Facets>
+              setFilter={setFilter}></Facets>
             <Instances
               instance={instance}
               search={search}
@@ -142,15 +143,13 @@ function App() {
               handleChecked={handleChecked}
               filter={filter}
               handleModal={handleModal}
-              setIsSelected={setIsSelected}
-            ></Instances>
+              setIsSelected={setIsSelected}></Instances>
             <Modal
               open={isOpen}
               onClose={() => setIsOpen(false)}
               instance={instance}
               isSelected={isSelected}
-              handleModal={handleModal}
-            ></Modal>
+              handleModal={handleModal}></Modal>
           </Route>
           <Route exact path="/dashboard">
             <Dashboard facets={facets}></Dashboard>

@@ -13,8 +13,10 @@ export let defaultKeywords = [
   "externalCondition",
   "activity",
   "@id",
-  "rdfs:label",
   "language",
+  "licenseIdentifier",
+  "license",
+  "distributionMediaType",
 ];
 export function isPrimitive(val) {
   if (typeof val == "object" || typeof val == "function") {
@@ -57,9 +59,35 @@ export function iterateObject(obj, keywords, result = {}) {
         "@value" in obj[key]
       ) {
         result[key] = obj[key]["@value"];
+      } else if (
+        typeof obj[key] === "object" &&
+        obj[key] !== null &&
+        !Array.isArray(obj[key]) &&
+        "@id" in obj[key] &&
+        "rdfs:label" in obj[key]
+      ) {
+        result[key] = obj[key]["rdfs:label"];
       }
     }
   }
   return result;
 }
+export function getIntancesSummary(
+  instances,
+  defaultKeywords
+) {
+  instances.map((instance) => delete instances["@context"]);
+  let instancesSummary = [];
+  let summaryData;
 
+  for (let i = 0; i < instances.length; i++) {
+    summaryData = iterateObject(
+      instances[i],
+      defaultKeywords,
+      {}
+    );
+    instancesSummary.push(summaryData);
+  }
+
+  return instancesSummary;
+}

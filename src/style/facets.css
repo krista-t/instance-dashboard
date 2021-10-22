@@ -23,7 +23,8 @@
 .facets ul {
   list-style-type: none;
 }
-.facets li {
+.facets li,
+.filters {
   position: relative;
   font-size: 1.18rem;
   color: var(--color-grey-700);
@@ -33,7 +34,8 @@
   margin-top: 15px;
 }
 
-.facets li:after {
+.facets li:after,
+.filters:after {
   position: absolute;
   content: "";
   height: 2px;
@@ -42,6 +44,25 @@
   right: 0;
   width: 100%;
   background: var(--color-blue);
+}
+
+.reset {
+  float: right;
+  margin: -5px 10px;
+}
+
+.reset button {
+  padding: 5px;
+  text-transform: uppercase;
+  border: 0.5px solid var(--color-blue);
+  background-color: var(--color-blue);
+  color: var(--color-grey-100);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.reset button:hover {
+  background-color: var(--color-grey-100);
+  color: var(--color-grey-700);
 }
 .facets .icon {
   color: var(--color-grey-500);
@@ -84,14 +105,36 @@ input[type="checkbox"] {
   filter: hue-rotate(325deg);
   -webkit-filter: hue-rotate(325deg);
 }
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1200px) {
   .facets-container {
     margin: 0 auto;
-    max-height: 55vw;
-    max-width: 19vw;
+    max-height: 65vw;
+    max-width: 30vw;
     overflow-y: scroll;
   }
   .facets li {
     font-size: 1rem;
+  }
+
+  .reset {
+    margin: -10px 10px;
+  }
+  .reset button {
+    padding: 3px;
+    width: 65px;
+    height: 35px;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 767px) {
+  .facets {
+    grid-area: 2/2/2/-1;
+    margin-left: auto;
+  }
+  .facets-container {
+    max-height: 75vw;
+    max-width: 35vw;
+    overflow-y: scroll;
   }
 }
