@@ -17,7 +17,8 @@ const Template = ({
 
   const [show, setShow] = useState(false);
 
-  const handleChange = (e, key) => {
+  const handleChange = (e, key, value) => {
+    console.log(value);
     setTemplateVal(e.target.textContent);
     setFacetID(key);
     setShow(!show);

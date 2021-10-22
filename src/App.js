@@ -87,7 +87,6 @@ function App() {
 
   const [showBoxes, setShowBoxes] = useState({});
   const [search, setSearch] = useState("");
-  // const [filter, setFilter] = useState([]);
   const [filter, setFilter] = useState([]);
   //MODAL HOOK
   const [isOpen, setIsOpen] = useState(false);
