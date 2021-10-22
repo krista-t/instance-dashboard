@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { useState, useEffect } from "react";
 import {
   FaAngleDown,
@@ -16,7 +15,8 @@ const Facets = ({
   //mobile view sidebar
   const [mobile, setMobile] = useState(false);
   // show/hide facet list in mobile
-  const [showFacets, setShowFacets] = useState(false);
+  const [facetsMobileView, setFacetsMobileView] =
+    useState(false);
   useEffect(() => {
     if (window.innerWidth < 800) {
       setMobile(true);
@@ -27,7 +27,6 @@ const Facets = ({
     const handleResize = () => {
       if (window.innerWidth < 800) {
         setMobile(true);
-        console.log("mobile");
       } else {
         setMobile(false);
       }
@@ -50,12 +49,18 @@ const Facets = ({
     setFilter({});
     setShowBoxes({});
   };
+
+  const toggleMobileList = () => {
+    !facetsMobileView
+      ? setFacetsMobileView(true)
+      : setFacetsMobileView(false);
+  };
   return (
     <section className="facets">
       {mobile && (
         <button
           className="mobile-btn"
-          onClick={() => setShowFacets(true)}>
+          onClick={() => toggleMobileList()}>
           <FaFilter
             style={{
               fontSize: "1.2rem",
@@ -79,6 +84,77 @@ const Facets = ({
 
           <form>
             <ul className="facets-title-container">
+              {Object.keys(facets).map((key, i) => {
+                return (
+                  <div key={i} id={key}>
+                    <li
+                      onClick={() => toggle(i)}
+                      value={toKebab(key)}>
+                      {toKebab(key)}
+                      <span className="icon">
+                        {showBoxes[i] ? (
+                          <FaAngleUp />
+                        ) : (
+                          <FaAngleDown />
+                        )}
+                      </span>
+                    </li>
+                    <br />
+                    {Object.keys(facets[key]).map(
+                      (termID) => {
+                        let termLabel =
+                          facets[key][termID]["rdfs:label"];
+                        return (
+                          <div key={termLabel} id={termID}>
+                            {showBoxes[i] ? (
+                              <div>
+                                <input
+                                  type="checkbox"
+                                  name={termLabel}
+                                  value={termLabel}
+                                  onChange={(e) => {
+                                    handleChecked(e);
+                                  }}
+                                />
+                                <label forhtml={termLabel}>
+                                  {termLabel}
+                                </label>
+                                <br />
+                              </div>
+                            ) : null}
+                          </div>
+                        );
+                      }
+                    )}
+                  </div>
+                );
+              })}
+            </ul>
+          </form>
+        </div>
+      )}
+      {/* MOBILE LIST */}
+      {mobile && (
+        <div
+          className={
+            facetsMobileView
+              ? "facets-container-mobile active"
+              : "facets-container-mobile"
+          }>
+          {Object.keys(facets).length !== 0 ? (
+            <p className="filters">
+              filter by:{" "}
+              <span className="reset">
+                <button onClick={() => resetFilters()}>
+                  {" "}
+                  reset filters
+                </button>
+              </span>
+            </p>
+          ) : null}
+
+          <form>
+            <ul>
               {Object.keys(facets).map((key, i) => {
                 return (
                   <div key={i} id={key}>
