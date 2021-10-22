@@ -61,10 +61,7 @@ const Facets = ({
         <button
           className="mobile-btn"
           onClick={() => toggleMobileList()}>
-          <FaFilter
-            style={{
-              fontSize: "1.2rem",
-            }}></FaFilter>
+          <FaFilter></FaFilter>
           <span>FILTER</span>
         </button>
       )}
@@ -151,7 +148,9 @@ const Facets = ({
                 </button>
               </span>
             </p>
-          ) : null}
+          ) : (
+            <p>No Facets to Show</p>
+          )}
 
           <form>
             <ul>

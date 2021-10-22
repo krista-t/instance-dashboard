@@ -1,6 +1,6 @@
 .modal {
   position: fixed;
-  z-index: 10;
+  z-index: 100;
   width: 100%;
   height: 100%;
   top: 0;
@@ -48,8 +48,8 @@
 }
 .close {
   position: absolute;
-  top: -1.2%;
-  right: 0%;
+  top: 0%;
+  right: 1%;
   font-size: 3rem;
   cursor: pointer;
   color: var(--color-blue);
@@ -69,11 +69,11 @@
   display: flex;
   align-self: flex-start;
   flex-direction: column;
-  transform: translateY(15%);
-  -webkit-transform: translateY(15%);
-  -moz-transform: translateY(15%);
-  -ms-transform: translateY(15%);
-  -o-transform: translateY(15%);
+  transform: translateY(5vw);
+  -webkit-transform: translateY(5vw);
+  -moz-transform: translateY(5vw);
+  -ms-transform: translateY(5vw);
+  -o-transform: translateY(5vw);
   color: var(--color-grey-700);
 }
 .modal-data p,
@@ -128,7 +128,7 @@
     font-size: 2rem;
   }
   .content-wrapper {
-    margin: -30% 0;
+    margin: 12% -5%;
   }
   .modal-data {
     max-width: 375px;
