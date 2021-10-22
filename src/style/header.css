@@ -26,13 +26,13 @@
   z-index: 100;
   margin: 0px 5px;
 }
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
+@media only screen and (min-device-width: 375px) and (max-device-width: 767px) {
   .flex-container {
     flex-wrap: nowrap;
   }
   .navigation li {
     padding: 10px;
-    margin-left: 25px;
+    margin-left: 10px;
     font-size: 1rem;
   }
 }

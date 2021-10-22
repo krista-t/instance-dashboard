@@ -103,7 +103,7 @@ function App() {
       checked
         ? [...prev, [parentID, termID]]
         : prev.filter(function (el) {
-            return el[1] != termID;
+            return el[1] !== termID;
           })
     );
   };

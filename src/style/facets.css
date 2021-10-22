@@ -51,7 +51,8 @@
   margin: -5px 10px;
 }
 
-.reset button {
+.reset button,
+.mobile-btn {
   padding: 5px;
   text-transform: uppercase;
   border: 0.5px solid var(--color-blue);
@@ -60,7 +61,21 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.reset button:hover {
+.mobile-btn {
+  padding: 10px 40px;
+  margin-right: 20px;
+  min-height: 45px;
+  font-size: 1rem;
+}
+.mobile-btn span {
+  font-size: 1rem;
+  margin-left: 10px;
+}
+.mobile-btn svg:hover {
+  color: var(--color-blue);
+}
+.reset button:hover,
+.mobile-btn:hover {
   background-color: var(--color-grey-100);
   color: var(--color-grey-700);
 }
@@ -105,6 +120,8 @@ input[type="checkbox"] {
   filter: hue-rotate(325deg);
   -webkit-filter: hue-rotate(325deg);
 }
+.mobile-btn {
+}
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1200px) {
   .facets-container {
@@ -129,12 +146,27 @@ input[type="checkbox"] {
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 767px) {
   .facets {
+    position: absolute;
+    top: 15%;
     grid-area: 2/2/2/-1;
     margin-left: auto;
   }
+
   .facets-container {
-    max-height: 75vw;
-    max-width: 35vw;
+    max-height: 65vh;
+    max-width: 85vw;
     overflow-y: scroll;
+    background-color: hotpink;
+    z-index: 1100;
+  }
+
+  .facets li,
+  .facets p {
+    font-size: 1rem;
+  }
+  .reset button {
+    padding: 3px;
+    width: 65px;
+    height: 35px;
   }
 }
