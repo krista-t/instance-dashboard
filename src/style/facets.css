@@ -4,8 +4,8 @@
 }
 .facets-container {
 	margin: 0 auto;
-	max-height: 35vw;
-	max-width: 19vw;
+	height: 35vw;
+	width: 19vw;
 	overflow-y: scroll;
 }
 
@@ -125,7 +125,7 @@ input[type="checkbox"] {
 
 .facets-container-mobile {
 	position: absolute;
-	top: 0%;
+	top: 35px;
 	left: 100vw;
 	grid-area: 2/2/2/-1;
 	transition: 0.3s all ease-in-out;

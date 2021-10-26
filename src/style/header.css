@@ -4,6 +4,7 @@
 	width: 100vw;
 	height: 130px;
 	position: fixed;
+	z-index: 101;
 }
 .flex-container {
 	display: flex;

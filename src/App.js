@@ -115,16 +115,17 @@ function App() {
 		<div className="App">
 			<BrowserRouter>
 				<Header></Header>
+
+				<Template
+					templates={templates}
+					facetID={facetID}
+					setFacetID={setFacetID}
+					setInstanceID={setInstanceID}
+					showBoxes={showBoxes}
+					setShowBoxes={setShowBoxes}
+					setFilter={setFilter}></Template>
 				<Switch>
 					<Route exact path="/">
-						<Template
-							templates={templates}
-							facetID={facetID}
-							setFacetID={setFacetID}
-							setInstanceID={setInstanceID}
-							showBoxes={showBoxes}
-							setShowBoxes={setShowBoxes}
-							setFilter={setFilter}></Template>
 						<Search
 							instance={instance}
 							search={search}
