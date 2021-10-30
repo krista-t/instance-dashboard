@@ -35,8 +35,12 @@
 		margin: 5px 0;
 	}
 	.navigation li {
-		padding: 5px;
-		margin-left: 10px;
+		padding: 13px 0;
+		margin: 0 35px;
 		font-size: 1rem;
+	}
+	.logo {
+		z-index: 100;
+		width: 80px;
 	}
 }
