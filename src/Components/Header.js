@@ -1,11 +1,11 @@
-import logo from "../assets/logo.svg";
+import logocedar from "../assets/logocedar.svg";
 import { Link } from "react-router-dom";
 const Header = () => {
 	return (
 		<header className="header-container">
 			<div className="flex-container">
 				<div className="logo">
-					<img height={120} src={logo} alt="logo" />
+					<img height={130} src={logocedar} alt="logo" />
 				</div>
 				<nav className="navigation">
 					<ul>

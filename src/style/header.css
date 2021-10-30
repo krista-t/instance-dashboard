@@ -19,7 +19,7 @@
 	list-style-type: none;
 }
 .navigation li {
-	padding: 15px;
+	padding: 20px;
 	color: var(--color-grey-100);
 	font-size: large;
 }

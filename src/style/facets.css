@@ -49,6 +49,7 @@
 
 .reset {
 	float: right;
+	padding: 0 10px;
 }
 
 .reset button,
